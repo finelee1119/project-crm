@@ -6,7 +6,7 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
     
-<!-- 	<typeAliases> -->
-<!--         <typeAlias type="kr.co.zzz.dto.AdminDto" alias="adminDto"></typeAlias> -->
-<!-- 	</typeAliases> -->
+	<typeAliases>
+        <typeAlias type="com.gsitm.projectcrm.dto.CustomerDto" alias="customerDto"></typeAlias>
+	</typeAliases>
 </configuration>
