@@ -20,7 +20,4 @@ public class CustomerService {
 	public List<TextLogDto> getDTOInfo(String keyword){
 		return customerMapper.getDTOInfo(keyword);
 	}
-	
-
-	
 }
