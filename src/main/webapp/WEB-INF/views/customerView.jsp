@@ -351,8 +351,9 @@
 				          $("#searchResults").empty();
 				          for (var i = 0; i < data.length; i++) {
 				            if(i == 0){
-				            	var str = "<label><input type='radio' id='" + data[i].cust_SN + "' value = '" + data[i].cust_SN + "' name='result' class='result' checked>"
+				            	var str = "<label><input type='radio' value='" + data[i].cust_NM + "' name='result' class='result' checked>"
 				                + data[i].cust_NM
+				                + "</label><br>";
 				                + "</label><br>";
 					            console.log(str);
 					            $("#searchResults").append(str);
@@ -399,7 +400,7 @@
 				            } else {
 				            	var item = data[i].cust_NM;
 				            	console.log(data[i].cust_NM)
-				            	var str = "<label><input type='radio' value='" + data[1].cust_NM + "' name='result'>"
+				            	var str = "<label><input type='radio' value='" + data[i].cust_NM + "' name='result'>"
 				                + data[i].cust_NM
 				                + "</label><br>";
 					            $("#searchResults").append(str);
@@ -471,7 +472,7 @@
 						$("#CUST_SN").val(cust_SN);
 						$("#VBRDT").val(vbrdt);
 						$("#MBL_TELNO").val(mbl_TELNO);
-						$("#EML_ADDR").val(EML_ADDR);
+						$("#EML_ADDR").val(eml_ADDR);
 						$("#CR_NM").val(cr_NM);
 						$("#ROAD_NM_ADDR").val(road_NM_ADDR);
 						$("#PRIDTF_NO").val(pridtf_NO);
