@@ -8,5 +8,6 @@
     
 	<typeAliases>
         <typeAlias type="com.gsitm.projectcrm.dto.CustomerDto" alias="customerDto"></typeAlias>
+        <typeAlias type="com.gsitm.projectcrm.dto.TextLogDto" alias="textLogDto"></typeAlias>
 	</typeAliases>
 </configuration>
