@@ -469,17 +469,21 @@
 				        use_YN =  data.use_YN;
 				        $("#CUST_NM").val(cust_NM);
 						$("#FRST_REG_DT").val(frst_REG_DT);
+						$("#PRIDTF_NO").val(pridtf_NO);
 						$("#CUST_SN").val(cust_SN);
 						$("#VBRDT").val(vbrdt);
-						$("#MBL_TELNO").val(mbl_TELNO);
-						$("#EML_ADDR").val(eml_ADDR);
 						$("#CR_NM").val(cr_NM);
+						$("#MBL_TELNO").val(mbl_TELNO);
+						$("#HOME_TELNO").val(home_TELNO);
 						$("#ROAD_NM_ADDR").val(road_NM_ADDR);
-						$("#PRIDTF_NO").val(pridtf_NO);
+						$("#FRST_RGTR_SN").val(frst_RGTR_SN);
+						$("#EML_ADDR").val(eml_ADDR);
+
+						
 						$("#PIC_SN_VL").val(pic_SN_VL);
 						$("#LAST_MDFCN_DT").val(last_MDFCN_DT);
 						$("#USE_YN").val(use_YN);
-						$("#FRST_RGTR_SN").val(frst_RGTR_SN);
+						
 				      },
 				      error : function(
 				          errorThrown) {
