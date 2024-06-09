@@ -321,7 +321,7 @@
 				    obj[keyname] = targetValue; // 가져온 값을 객체에 설정합니다.
 				
 				    $.ajax({
-				        url: "<c:url value='/TextAjax' />",
+				        url: "<c:url value='/TextLogAjax' />",
 				        type: "post",
 				        data: JSON.stringify(obj), // 객체를 JSON 문자열로 변환하여 전송합니다.
 				        dataType: "json",
