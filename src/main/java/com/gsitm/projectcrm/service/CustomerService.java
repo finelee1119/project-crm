@@ -20,4 +20,19 @@ public class CustomerService {
 	public List<TextLogDto> getDTOInfo(String keyword){
 		return customerMapper.getDTOInfo(keyword);
 	}
+
+	public List<CustomerDto> list() {
+		// TODO Auto-generated method stub
+		return customerMapper.list();
+	}
+
+	public List<CustomerDto> listFind(String keyword) {
+		// TODO Auto-generated method stub
+		return customerMapper.listFind(keyword);
+	}
+
+	public CustomerDto searchAdminOne(String keyword) {
+		// TODO Auto-generated method stub
+		return customerMapper.searchAdminOne(keyword);
+	}
 }

@@ -48,16 +48,8 @@ public class CustomerController {
 		System.out.println("keyword = " + keyword);
 //		List<AdminDto> adminDtos = adminService.searchAdminOne(keyword);
 		List<CustomerDto> dtos = new ArrayList<>();
-//		dtos = service.list();
-//		System.out.println(dtos.toString());
-//		body.put("a_id", "admin");
-		for (int i = 0; i < 10 ; i++) {
-			CustomerDto dto = new CustomerDto();
-			dto.setCUST_SN((long)i);
-			dto.setCUST_NM(String.valueOf(i+10));
-			dto.setCR_NM(String.valueOf(i));
-			dtos.add(dto);
-		}
+		dtos = customerService.listFind(keyword);
+		System.out.println(dtos.toString());
 
 		return dtos;
 	}
@@ -69,13 +61,7 @@ public class CustomerController {
 //		dtos = service.list();
 //		System.out.println(dtos.toString());
 //		body.put("a_id", "admin");
-		for (int i = 0; i < 10 ; i++) {
-			CustomerDto dto = new CustomerDto();
-			dto.setCUST_SN((long)i);
-			dto.setCUST_NM(String.valueOf(i+10));
-			dto.setCR_NM(String.valueOf(i));
-			dtos.add(dto);
-		}
+		dtos = customerService.list();
 		
 		return dtos;
 	}
@@ -86,10 +72,9 @@ public class CustomerController {
 		String keyword = body.get("keyword");
 		System.out.println("keyword = " + keyword);
 	
-		CustomerDto dto = new CustomerDto();
-//		adminDtos = service.searchAdminOne(keyword);
-		dto.setCUST_NM("aaaa");
-		System.out.println(dto.toString());
+		CustomerDto dto = new CustomerDto(); dto =
+		customerService.searchAdminOne(keyword); System.out.println(dto.toString());
+		 
 		return dto;
 	}
 	

@@ -192,22 +192,6 @@
 							<button class="btn btn-primary" id="search">조건 검색</button>
 							<button class="btn btn-secondary" id="searchAll">전체 검색</button>
 							<div id="searchResults">
-								<div>
-									<input type="radio" name="customer" id="customer1" value="홍길동"> <label
-										for="customer1">홍길동</label>
-								</div>
-								<div>
-									<input type="radio" name="customer" id="customer2"  value="강해라"> <label
-										for="customer2">강해라</label>
-								</div>
-								<div>
-									<input type="radio" name="customer" id="customer3"  value="나란다"> <label
-										for="customer3">나란다</label>
-								</div>
-								<div>
-									<input type="radio" name="customer" id="customer4"  value="담나라"> <label
-										for="customer4">담나라</label>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -313,8 +297,16 @@
 			
 			
 			var allData;
-			$(document).ready(function() {
-				$(document).on("click", "input:radio[name='customer']", function(){
+			$(document).ready(function() {		
+				let now = new Date();
+			    let year = now.getFullYear();
+			    let month = now.getMonth() + 1;
+			    let day = now.getDate();
+				$("#FRST_REG_DT").val(
+						year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day)
+						);
+				
+				$(document).on("click", "input:radio[name='result']", function(){
 					var targetValue = $(this).val(); // 라디오 버튼의 값(value)을 가져옵니다.
 				    var keyname = "keyword";
 				    var obj = {};
@@ -339,16 +331,7 @@
 				        }
 				    });
 				});
-			});
 				
-			$(document).ready(function() {		
-				let now = new Date();
-			    let year = now.getFullYear();
-			    let month = now.getMonth() + 1;
-			    let day = now.getDate();
-				$("#FRST_REG_DT").val(
-						year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day)
-						);
 				$("#search").on("click", function() {
 				    var keyword = $("#searchInput").val().trim();
 				    if (keyword == "") {
@@ -406,7 +389,7 @@
 				          $("#searchResults").empty();
 				          for (var i = 0; i < data.length; i++) {
 				            if(i == 0){
-				            	var str = "<label><input type='radio' id='" + data[i].cust_SN + "' name='result' class='result' checked>"
+				            	var str = "<label><input type='radio' value='" + data[i].cust_NM + "' name='result' class='result' checked>"
 				                + data[i].cust_NM
 				                + "</label><br>";
 					            console.log(str);
@@ -416,7 +399,7 @@
 				            } else {
 				            	var item = data[i].cust_NM;
 				            	console.log(data[i].cust_NM)
-				            	var str = "<label><input type='radio' id='" + data[1].cust_SN + "' name='result'>"
+				            	var str = "<label><input type='radio' value='" + data[1].cust_NM + "' name='result'>"
 				                + data[i].cust_NM
 				                + "</label><br>";
 					            $("#searchResults").append(str);
@@ -443,9 +426,8 @@
 							);
 				});
 				
-				$(document).on("change", "input:radio[name='result']", function(){
-					$("#FRST_REG_DT").val("1");
-					var targetId = $(this).attr('id');
+				$(document).on("click", "input:radio[name='result']", function(){
+					var targetId = $(this).val();
 				    var keyname = "keyword";
 				    var obj = {};
 				    var cust_SN;
@@ -488,12 +470,15 @@
 						$("#FRST_REG_DT").val(frst_REG_DT);
 						$("#CUST_SN").val(cust_SN);
 						$("#VBRDT").val(vbrdt);
-						$("#HOME_TELNO").val(home_TELNO);
+						$("#MBL_TELNO").val(mbl_TELNO);
+						$("#EML_ADDR").val(EML_ADDR);
 						$("#CR_NM").val(cr_NM);
 						$("#ROAD_NM_ADDR").val(road_NM_ADDR);
+						$("#PRIDTF_NO").val(pridtf_NO);
 						$("#PIC_SN_VL").val(pic_SN_VL);
 						$("#LAST_MDFCN_DT").val(last_MDFCN_DT);
 						$("#USE_YN").val(use_YN);
+						$("#FRST_RGTR_SN").val(frst_RGTR_SN);
 				      },
 				      error : function(
 				          errorThrown) {

@@ -4,8 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gsitm.projectcrm.mapper.CustomerMapper">
+	<resultMap id="customerResultMap" type="com.gsitm.projectcrm.dto.CustomerDto">
+        <id property="CUST_SN" column="cust_sn" />
+        <result property="CUST_NM" column="cust_nm" />
+        <result property="EML_ADDR" column="eml_addr" />
+        <result property="BRDT" column="brdt" />
+        <result property="HOME_TELNO" column="home_telno" />
+        <result property="MBL_TELNO" column="mbl_telno" />
+        <result property="PRIDTF_NO" column="pridtf_no" />
+        <result property="CR_NM" column="cr_nm" />
+        <result property="ROAD_NM_ADDR" column="road_nm_addr" />
+        <result property="PIC_SN_VL" column="pic_sn_vl" />
+        <result property="TKCG_DEPT_NM" column="tkcg_dept_nm" />
+        <result property="FRST_REG_DT" column="frst_reg_dt" />
+        <result property="FRST_RGTR_SN" column="frst_rgtr_sn" />
+        <result property="LAST_MDFCN_DT" column="last_mdfcn_dt" />
+        <result property="USE_YN" column="use_yn" />
+    </resultMap>
     <select id="getDTOInfo" parameterType="string" resultType="textLogDto">
 	SELECT cus_nm, man_nm, date, hour, content FROM textlog
 	WHERE cus_nm=#{keyword}
+	</select>
+	<select id="list" resultMap="customerResultMap">
+	SELECT * FROM KDT_CUST_INFO_BASC
+	</select>
+	<select id="listFind" resultMap="customerResultMap">
+	SELECT * FROM KDT_CUST_INFO_BASC
+	WHERE cust_nm LIKE CONCAT('%',#{keyword},'%')
+	</select>
+	<select id="searchAdminOne" resultMap="customerResultMap">
+		SELECT * FROM KDT_CUST_INFO_BASC
+		WHERE cust_nm = #{keyword}
 	</select>
 </mapper>
