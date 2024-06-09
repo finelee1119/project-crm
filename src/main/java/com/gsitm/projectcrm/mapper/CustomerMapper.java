@@ -13,4 +13,10 @@ import com.gsitm.projectcrm.dto.TextLogDto;
 public interface CustomerMapper {
 
 	List<TextLogDto> getDTOInfo(@Param("keyword")String keyword);
+
+	List<CustomerDto> list();
+
+	List<CustomerDto> listFind(String keyword);
+
+	CustomerDto searchAdminOne(String keyword);
 }
