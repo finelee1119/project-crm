@@ -358,7 +358,7 @@
 				          $("#searchResults").empty();
 				          for (var i = 0; i < data.length; i++) {
 				            if(i == 0){
-				            	var str = "<label><input type='radio' value='" + data[i].cust_NM + "' name='result' class='result' checked>"
+				            	var str = "<label><input type='radio' value='" + data[i].cust_SN + "' name='result' class='result' checked>"
 				                + data[i].cust_NM
 				                + "</label><br>";
 				                + "</label><br>";
@@ -397,7 +397,7 @@
 				          $("#searchResults").empty();
 				          for (var i = 0; i < data.length; i++) {
 				            if(i == 0){
-				            	var str = "<label><input type='radio' value='" + data[i].cust_NM + "' name='result' class='result' checked>"
+				            	var str = "<label><input type='radio' value='" + data[i].cust_SN + "' name='result' class='result' checked>"
 				                + data[i].cust_NM
 				                + "</label><br>";
 					            console.log(str);
@@ -407,7 +407,7 @@
 				            } else {
 				            	var item = data[i].cust_NM;
 				            	console.log(data[i].cust_NM)
-				            	var str = "<label><input type='radio' value='" + data[i].cust_NM + "' name='result'>"
+				            	var str = "<label><input type='radio' value='" + data[i].cust_SN + "' name='result'>"
 				                + data[i].cust_NM
 				                + "</label><br>";
 					            $("#searchResults").append(str);
