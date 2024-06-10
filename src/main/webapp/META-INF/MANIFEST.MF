@@ -1,0 +1,13 @@
+<<<<<<< HEAD:target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+Manifest-Version: 1.0
+Built-By: EZEN
+Build-Jdk: 1.8.0_202
+Created-By: Maven Integration for Eclipse
+
+=======
+Manifest-Version: 1.0
+Built-By: EZEN
+Build-Jdk: 1.8.0_202
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> 0c82d9f1496470adad226d59bf5fbd2e95c890fd:src/main/webapp/META-INF/MANIFEST.MF
