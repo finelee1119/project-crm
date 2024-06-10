@@ -269,12 +269,12 @@
 								<div class="d-flex flex-wrap mb-1">
 									<button class="btn btn-primary">등록</button>
 									<button class="btn btn-primary">변경</button>
-									<button class="btn btn-primary">삭제</button>
+									<button class="btn btn-primary" id="del-btn">삭제</button>
 									<button class="btn btn-primary" id="res">신규</button>
 								</div>
 								<div class="d-flex flex-wrap justify-content-space-between">
 									<button class="btn btn-danger">고객조회</button>
-									<button class="btn btn-secondary">종료</button>
+									<button class="btn btn-secondary" id="end-btn">종료</button>
 								</div>
 							</div>
 	
@@ -334,6 +334,7 @@
 				
 				$("#search").on("click", function() {
 				    var keyword = $("#searchInput").val().trim();
+				    $("#content").empty();
 				    if (keyword == "") {
 				      alert('아이디를 입력하세요')
 				    } else {
@@ -351,8 +352,9 @@
 				          $("#searchResults").empty();
 				          for (var i = 0; i < data.length; i++) {
 				            if(i == 0){
-				            	var str = "<label><input type='radio' id='" + data[i].cust_SN + "' value = '" + data[i].cust_SN + "' name='result' class='result' checked>"
+				            	var str = "<label><input type='radio' value='" + data[i].cust_NM + "' name='result' class='result' checked>"
 				                + data[i].cust_NM
+				                + "</label><br>";
 				                + "</label><br>";
 					            console.log(str);
 					            $("#searchResults").append(str);
@@ -399,7 +401,7 @@
 				            } else {
 				            	var item = data[i].cust_NM;
 				            	console.log(data[i].cust_NM)
-				            	var str = "<label><input type='radio' value='" + data[1].cust_NM + "' name='result'>"
+				            	var str = "<label><input type='radio' value='" + data[i].cust_NM + "' name='result'>"
 				                + data[i].cust_NM
 				                + "</label><br>";
 					            $("#searchResults").append(str);
@@ -410,13 +412,14 @@
 				            errorThrown) {
 				          alert(errorThrown.statusText);
 				        }
-				      });
+				      });	
 				    });
 				
 				$("#res").on("click",function(){
 					$("#frm_update").each(function() {
 					    this.reset();
 					});
+					$("#content").empty();
 					let now = new Date();
 				    let year = now.getFullYear();
 				    let month = now.getMonth() + 1;
@@ -424,25 +427,17 @@
 					$("#FRST_REG_DT").val(
 							year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day)
 							);
+					$('#frm_update').attr('action', "< c:url value='/' />");
+				});
+				$("#end-btn").on("click",function(){
+					alert("페이지를 종료합니다")
+					window.location.href = "< c:url value='/' />";
 				});
 				
 				$(document).on("click", "input:radio[name='result']", function(){
 					var targetId = $(this).val();
 				    var keyname = "keyword";
 				    var obj = {};
-				    var cust_SN;
-				    var cust_NM;
-				    var vbrdt;
-				    var home_TELNO;
-				    var mbl_TELNO ;
-				    var pridtf_NO;
-				    var cr_NM;
-				    var road_NM_ADDR;
-				    var pic_SN_VL;
-				    var tkcg_DEPT_NM;
-				    var frst_REG_DT;
-				    var last_MDFCN_DT;
-				    var use_YN;
 				    obj[keyname] = targetId;
 						$.ajax({
 				      url : "<c:url value='/searchOneAjax' />",
@@ -452,39 +447,43 @@
 				      dataType : "json",
 				      contentType : "application/json",
 				      success : function(data) {
-				        // var strContent = "<td>" + data[0].a_name + "</td><td>" + data[0].a_phone + "</td>" 
-				        cust_SN =  data.cust_SN;
-				        cust_NM =  data.cust_NM;
-				        vbrdt =  data.vbrdt;
-				        home_TELNO =  data.home_TELNO;
-				        mbl_TELNO =  data.mbl_TELNO;
-				        pridtf_NO =  data.pridtf_NO;
-				        cr_NM =  data.cr_NM;
-				        road_NM_ADDR =  data.road_NM_ADDR;
-				        pic_SN_VL =  data.pic_SN_VL;
-				        tkcg_DEPT_NM =  data.tkcg_DEPT_NM;
-				        frst_REG_DT =  data.frst_REG_DT;
-				        last_MDFCN_DT =  data.last_MDFCN_DT;
-				        use_YN =  data.use_YN;
-				        $("#CUST_NM").val(cust_NM);
-						$("#FRST_REG_DT").val(frst_REG_DT);
-						$("#CUST_SN").val(cust_SN);
-						$("#VBRDT").val(vbrdt);
-						$("#MBL_TELNO").val(mbl_TELNO);
-						$("#EML_ADDR").val(EML_ADDR);
-						$("#CR_NM").val(cr_NM);
-						$("#ROAD_NM_ADDR").val(road_NM_ADDR);
-						$("#PRIDTF_NO").val(pridtf_NO);
-						$("#PIC_SN_VL").val(pic_SN_VL);
-						$("#LAST_MDFCN_DT").val(last_MDFCN_DT);
-						$("#USE_YN").val(use_YN);
-						$("#FRST_RGTR_SN").val(frst_RGTR_SN);
+				        $("#CUST_NM").val(data.cust_NM);
+						$("#FRST_REG_DT").val(data.frst_REG_DT);
+						$("#PRIDTF_NO").val(data.pridtf_NO);
+						$("#CUST_SN").val(data.cust_SN);
+						$("#VBRDT").val(data.vbrdt);
+						$("#CR_NM").val(data.cr_NM);
+						$("#MBL_TELNO").val(data.mbl_TELNO);
+						$("#HOME_TELNO").val(data.home_TELNO);
+						$("#ROAD_NM_ADDR").val(data.road_NM_ADDR);
+						$("#FRST_RGTR_SN").val(data.frst_RGTR_SN);
+						$("#EML_ADDR").val(data.eml_ADDR);
+						$('#frm_update').attr('action', "< c:url value='/' />");
+
+						
+						$("#PIC_SN_VL").val(data.pic_SN_VL);
+						$("#LAST_MDFCN_DT").val(data.last_MDFCN_DT);
+						$("#USE_YN").val(data.use_YN);
+						
 				      },
 				      error : function(
 				          errorThrown) {
 				        alert(errorThrown.statusText);
 				      }
 				    });
+				});
+				
+				$('#del-btn').click(function() {
+			        // confirm 창을 띄워서 사용자에게 선택을 요청
+			        var userConfirmed = confirm("정말 이 고객의 정보를 삭제하시겠습니까?");
+			        
+			        // 사용자가 "예"를 선택했을 때의 동작
+			        if (userConfirmed) {
+			        	alert("정상적으로 삭제되었습니다.");
+			        }
+			        else {
+			        	alert("삭제를 취소합니다.");
+			        }
 				});
 				
 			});
