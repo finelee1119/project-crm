@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,6 +78,20 @@ public class CustomerController {
 		 
 		return dto;
 	}
+	
+	@PostMapping("/registerCustomer")
+    @ResponseBody
+    public void registerCustomer(@ModelAttribute CustomerDto customerDTO) {
+		customerService.registerCustomer(customerDTO);
+    }
+
+    @PostMapping("/updateCustomer")
+    @ResponseBody
+    public void updateCustomer(@ModelAttribute CustomerDto customerDTO) {
+    	String a =  customerDTO.getCUST_NM();
+        System.out.println(customerDTO.getCUST_NM()+""+customerDTO.getEML_ADDR());
+        customerService.updateCustomer(customerDTO);
+    }
 	
 }
  

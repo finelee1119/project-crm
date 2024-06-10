@@ -19,4 +19,8 @@ public interface CustomerMapper {
 	List<CustomerDto> listFind(String keyword);
 
 	CustomerDto searchAdminOne(String keyword);
+	
+	void updateCustomer(@Param("customerDto")CustomerDto customerDTO);
+	
+	void registerCustomer(@Param("customerDto")CustomerDto customerDTO);
 }
