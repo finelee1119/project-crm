@@ -478,7 +478,6 @@
 			        	keyword = ("#CUST_SN").val()
 			        	console.log(keyword)
 			        	console.log("aa")
-			        	alert("정상적으로 삭제되었습니다.");
 			        }
 			        else {
 			        	alert("삭제를 취소합니다.");
