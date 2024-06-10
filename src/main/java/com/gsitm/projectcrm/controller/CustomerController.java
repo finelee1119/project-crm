@@ -31,6 +31,11 @@ public class CustomerController {
 		return "customerView";
 	}
 
+	@GetMapping("/customerSearch")
+	public String customerSearch() {
+		return "customerSearch";
+	}
+	
 	@PostMapping("/TextLogAjax")
 	@ResponseBody
 	public List<TextLogDto> TextLog(@RequestBody Map<String, String> body) {
