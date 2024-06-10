@@ -273,19 +273,11 @@
 									<button class="btn btn-primary" id="res">신규</button>
 								</div>
 								<div class="d-flex flex-wrap justify-content-space-between">
-								<div>
-									<form action="http://localhost:8080/gsitm/customerSearch"
-										method="get" style="margin: 0;" class="d-flex">
-										<button type="submit" class="btn btn-danger">고객조회</button>
-									</form>
-								</div>
-								<div>
-									<form action="http://localhost:8080/gsitm/" method="get"
-										style="margin: 0;" class="d-flex">
-										<button type="submit" class="btn btn-secondary">종료</button>
-									</form>
+									<button class="btn btn-danger">고객조회</button>
+									<button class="btn btn-secondary" id="end-btn">종료</button>
 								</div>
 							</div>
+	
 						</div>
 					</div>
 				</div>
