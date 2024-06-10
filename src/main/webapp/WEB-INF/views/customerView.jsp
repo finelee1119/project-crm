@@ -251,6 +251,9 @@
                            <label>연락처</label> <input type="text" readonly
                               value="010-2300-4100">
                         </div>
+                        <div>
+                        <input type="hidden" id="CUST_SN" value="">
+                        </div>
                      </form>
                   </div>
                </div>
@@ -470,21 +473,49 @@
 				      }
 				    });
 				});
-				$('#del-btn').click(function() {
+/* 				$('#del-btn').click(function() {
 			        // confirm 창을 띄워서 사용자에게 선택을 요청
 			        var userConfirmed = confirm("정말 이 고객의 정보를 삭제하시겠습니까?");
 			        
 			        // 사용자가 "예"를 선택했을 때의 동작
 			        if (userConfirmed) {
-			        	keyword = ("#CUST_SN").val()
-			        	console.log(keyword)
+			        	var targetValue = $("#CUST_SN").val()
+			        	console.log(targetValue)
 			        	console.log("aa")
+			        	var keyname = "keyword";
+		                var obj = {};
+		                obj[keyname] = targetValue;
+			        	
 			        }
 			        else {
 			        	alert("삭제를 취소합니다.");
 			        }
 				});				
-				
+				 */
+				$('#del-btn').click(function() {
+                    var userConfirmed = confirm("정말 이 고객의 정보를 삭제하시겠습니까?");
+                   
+                    if (userConfirmed) {
+                        var CUST_SN = $('#CUST_SN').val();
+                        
+                        // 고객 정보 삭제 요청을 보냅니다.
+                        $.ajax({
+                            url: "<c:url value='/deleteCustomer' />",
+                            type: "POST",
+                            data: { CUST_SN: CUST_SN }, // 삭제할 고객의 키워드를 서버로 전송합니다.
+                            success: function(response) {
+                                alert("정상적으로 삭제되었습니다.");
+                                location.href = "<c:url value='/cust' />"; // 삭제 성공 시 /cust 페이지로 이동합니다.
+                            },
+                            error: function(xhr, status, error) {
+                                alert("삭제 중 오류가 발생했습니다.");
+                                console.error(xhr.responseText);
+                            }
+                        });
+                    } else {
+                        alert("삭제를 취소합니다.");
+                    }
+                });
 								
 			});
 		</script>
@@ -731,6 +762,7 @@
          // 변경 버튼 클릭 시
          $("#updateBtn").on("click", function() {
         	 let customerDTO = {
+        			 	CUST_SN: $("#CUST_SN").val(),
              			CUST_NM: $('input[name=CUST_NM]').val(),
              			PRIDTF_NO: $('input[name=PRIDTF_NO]').val(),
              			EML_ADDR : $('input[name=EML_ADDR]').val(),

@@ -23,4 +23,5 @@ public interface CustomerMapper {
 	void updateCustomer(@Param("customerDto")CustomerDto customerDTO);
 	
 	void registerCustomer(@Param("customerDto")CustomerDto customerDTO);
+	void deleteCustomer(@Param("CUST_SN")Long CUST_SN);
 }

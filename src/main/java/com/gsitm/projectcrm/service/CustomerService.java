@@ -41,4 +41,8 @@ public class CustomerService {
 	public void registerCustomer(CustomerDto customerDTO) {
 		   customerMapper.registerCustomer(customerDTO);
 	}
+	public void deleteCustomer(Long CUST_SN) {
+	      customerMapper.deleteCustomer(CUST_SN);
+	      
+	   }
 }

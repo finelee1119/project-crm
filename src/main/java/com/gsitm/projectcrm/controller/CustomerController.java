@@ -92,6 +92,13 @@ public class CustomerController {
         System.out.println(customerDTO.getCUST_NM()+""+customerDTO.getEML_ADDR());
         customerService.updateCustomer(customerDTO);
     }
+    
+    @PostMapping("/deleteCustomer")
+    @ResponseBody
+    public String deleteCustomer(@RequestParam("CUST_SN") Long CUST_SN) {
+        customerService.deleteCustomer(CUST_SN);
+        return "Customer deleted successfully";
+    }
 	
 }
  
