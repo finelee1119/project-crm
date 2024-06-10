@@ -78,5 +78,10 @@ public class CustomerController {
 		return dto;
 	}
 	
+	@GetMapping("/customerSearch")
+	public String customerSearch() {
+		return "customerSearch";
+	}
+	
 }
  
