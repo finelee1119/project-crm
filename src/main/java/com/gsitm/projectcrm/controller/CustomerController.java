@@ -40,8 +40,9 @@ public class CustomerController {
 	@PostMapping("/TextLogAjax")
 	@ResponseBody
 	public List<TextLogDto> TextLog(@RequestBody Map<String, String> body) {
-		String keyword = body.get("keyword");
-		System.out.println("keyword = " + keyword);
+		String keywordStr = body.get("keyword");
+		System.out.println("keyword = " + keywordStr);
+		Long keyword = Long.parseLong(keywordStr);
 	
 		List<TextLogDto> textLogDtos = customerService.getDTOInfo(keyword);
 		System.out.println(textLogDtos.toString());
@@ -75,11 +76,13 @@ public class CustomerController {
 	@PostMapping("/searchOneAjax")
 	@ResponseBody
 	public CustomerDto getOneListAdmin(@RequestBody Map<String, String> body) {
-		String keyword = body.get("keyword");
-		System.out.println("keyword = " + keyword);
+		String keywordStr = body.get("keyword");
+		Long keyword = Long.parseLong(keywordStr);
+//		System.out.println("keyword = " + keyword);
 	
-		CustomerDto dto = new CustomerDto(); dto =
-		customerService.searchAdminOne(keyword); System.out.println(dto.toString());
+		CustomerDto dto = new CustomerDto(); 
+		dto = customerService.searchAdminOne(keyword); 
+		System.out.println(dto.toString());
 		 
 		return dto;
 	}

@@ -17,7 +17,7 @@ public class CustomerService {
 	@Autowired 
 	CustomerMapper customerMapper;
 
-	public List<TextLogDto> getDTOInfo(String keyword){
+	public List<TextLogDto> getDTOInfo(Long keyword){
 		return customerMapper.getDTOInfo(keyword);
 	}
 
@@ -31,7 +31,7 @@ public class CustomerService {
 		return customerMapper.listFind(keyword);
 	}
 
-	public CustomerDto searchAdminOne(String keyword) {
+	public CustomerDto searchAdminOne(Long keyword) {
 		// TODO Auto-generated method stub
 		return customerMapper.searchAdminOne(keyword);
 	}

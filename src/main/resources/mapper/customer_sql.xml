@@ -21,9 +21,9 @@
         <result property="LAST_MDFCN_DT" column="last_mdfcn_dt" />
         <result property="USE_YN" column="use_yn" />
     </resultMap>
-    <select id="getDTOInfo" parameterType="string" resultType="textLogDto">
+    <select id="getDTOInfo" parameterType="Long" resultType="textLogDto">
 	SELECT cus_nm, man_nm, date, hour, content FROM textlog
-	WHERE cus_nm=#{keyword}
+	WHERE cus_nm = (select cust_nm from kdt_cust_info_basc kcib where cust_sn = #{keyword});
 	</select>
 	<select id="list" resultMap="customerResultMap">
 	SELECT * FROM KDT_CUST_INFO_BASC
@@ -34,7 +34,7 @@
 	</select>
 	<select id="searchAdminOne" resultMap="customerResultMap">
 		SELECT * FROM KDT_CUST_INFO_BASC
-		WHERE cust_nm = #{keyword}
+		WHERE cust_sn = #{keyword}
 	</select>
 	<update id="updateCustomer" parameterType="customerDto">
       UPDATE KDT_CUST_INFO_BASC SET
