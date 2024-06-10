@@ -35,4 +35,10 @@ public class CustomerService {
 		// TODO Auto-generated method stub
 		return customerMapper.searchAdminOne(keyword);
 	}
+	public void updateCustomer(CustomerDto customerDTO) {
+	      customerMapper.updateCustomer(customerDTO);
+	   }
+	public void registerCustomer(CustomerDto customerDTO) {
+		   customerMapper.registerCustomer(customerDTO);
+	}
 }
