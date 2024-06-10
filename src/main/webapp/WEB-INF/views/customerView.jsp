@@ -251,6 +251,7 @@
 									<label>연락처</label> <input type="text" readonly
 										value="010-2300-4100">
 								</div>
+								<input type="hidden" id="CUST_SN">
 							</form>
 						</div>
 					</div>
@@ -278,7 +279,7 @@
 								</div>
 							</div>
 	
-						</div>
+						</div>	
 					</div>
 				</div>
 			</div>
@@ -297,7 +298,8 @@
 			
 			
 			var allData;
-			$(document).ready(function() {		
+			$(document).ready(function() {				
+				
 				let now = new Date();
 			    let year = now.getFullYear();
 			    let month = now.getMonth() + 1;
@@ -448,6 +450,7 @@
 				      contentType : "application/json",
 				      success : function(data) {
 				        $("#CUST_NM").val(data.cust_NM);
+				        $("#CUST_SN").val(data.cust_SN);
 						$("#FRST_REG_DT").val(data.frst_REG_DT);
 						$("#PRIDTF_NO").val(data.pridtf_NO);
 						$("#CUST_SN").val(data.cust_SN);
@@ -458,13 +461,7 @@
 						$("#ROAD_NM_ADDR").val(data.road_NM_ADDR);
 						$("#FRST_RGTR_SN").val(data.frst_RGTR_SN);
 						$("#EML_ADDR").val(data.eml_ADDR);
-						$('#frm_update').attr('action', "< c:url value='/' />");
-
-						
-						$("#PIC_SN_VL").val(data.pic_SN_VL);
-						$("#LAST_MDFCN_DT").val(data.last_MDFCN_DT);
-						$("#USE_YN").val(data.use_YN);
-						
+						$('#frm_update').attr('action', "< c:url value='/' />");		
 				      },
 				      error : function(
 				          errorThrown) {
@@ -472,20 +469,23 @@
 				      }
 				    });
 				});
-				
 				$('#del-btn').click(function() {
 			        // confirm 창을 띄워서 사용자에게 선택을 요청
 			        var userConfirmed = confirm("정말 이 고객의 정보를 삭제하시겠습니까?");
 			        
 			        // 사용자가 "예"를 선택했을 때의 동작
 			        if (userConfirmed) {
+			        	keyword = ("#CUST_SN").val()
+			        	console.log(keyword)
+			        	console.log("aa")
 			        	alert("정상적으로 삭제되었습니다.");
 			        }
 			        else {
 			        	alert("삭제를 취소합니다.");
 			        }
-				});
+				});				
 				
+								
 			});
 		</script>
 	</body>
